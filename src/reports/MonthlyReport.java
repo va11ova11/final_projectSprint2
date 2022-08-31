@@ -7,7 +7,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MonthlyReport {
+<<<<<<< HEAD
     public final HashMap<Integer, ArrayList<MonthlyRecord>> months = new HashMap<>();
+=======
+    HashMap<Integer, ArrayList<MonthlyRecord>> months = new HashMap<>();
+>>>>>>> origin/master
 
     public void createReport() {
         for (int number = 1; number <= 3; number++) {
