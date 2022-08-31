@@ -1,9 +1,12 @@
+import reports.MonthlyReport;
+import reports.YearlyReport;
+import util.Reconciliation;
+
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        // Поехали!
         MonthlyReport monthlyReport = new MonthlyReport();
         YearlyReport yearlyReport = new YearlyReport();
         Reconciliation reconciliation = new Reconciliation();
@@ -14,19 +17,19 @@ public class Main {
             int inputMenuInput = scanner.nextInt();
             switch (inputMenuInput) {
                 case 1:
-                    monthlyReport.createPort();
+                    monthlyReport.createReport();
                     break;
                 case 2:
-                    yearlyReport.createPort();
+                    yearlyReport.createYearlyReport();
                     break;
                 case 3:
-                    reconciliation.checkReports(monthlyReport.monthlyRecords, yearlyReport.yearlyRecords);
+                    reconciliation.checkReports(monthlyReport, yearlyReport);
                     break;
                 case 4:
-                    monthlyReport.infoAboutAllMonths(monthlyReport.monthlyRecords);
+                    monthlyReport.infoAboutAllMonths();
                     break;
                 case 5:
-                    yearlyReport.infoAboutYears(yearlyReport.yearlyRecords);
+                    yearlyReport.infoAboutYear();
                     break;
                 case 0:
                     System.out.println("Программа завершена");
@@ -46,4 +49,3 @@ public class Main {
         System.out.println("0. - Завершить программу");
     }
 }
-

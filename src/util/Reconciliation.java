@@ -1,14 +1,20 @@
-import java.util.ArrayList;
+package util;
+
+import reports.MonthlyReport;
+import reports.YearlyReport;
 
 public class Reconciliation {
-    YearlyReport yearlyReport = new YearlyReport();
-    MonthlyReport monthlyReport = new MonthlyReport();
 
-    void checkReports(ArrayList<MonthlyRecord> monthlyRecords, ArrayList<YearlyRecord> yearlyRecords) {
-        if (!((monthlyRecords.isEmpty() || (yearlyRecords.isEmpty())))) {
+    public void checkReports(MonthlyReport monthlyReport, YearlyReport yearlyReport) {
+        if (!((monthlyReport.months.isEmpty() || (yearlyReport.years.isEmpty())))) {
+
             for (int i = 1; i < 4; i++) {
-                boolean checkExpense = (monthlyReport.checkExpense(i, monthlyRecords) == yearlyReport.checkExpense(i, yearlyRecords));
-                boolean checkIncome = (monthlyReport.checkIncome(i, monthlyRecords) == yearlyReport.checkIncome(i, yearlyRecords));
+
+                boolean checkExpense = monthlyReport.getExpensesForMonth(i, monthlyReport.months) ==
+                        yearlyReport.getExpensesForMonthInYear(i);
+                boolean checkIncome = monthlyReport.getProfitForMonth(i, monthlyReport.months) ==
+                        yearlyReport.getIncomeMonthInYear(i);
+
                 if (checkExpense) {
                     System.out.println("Расходы в месяце " + i + " сошлись с расходами в годовом отчете");
                 } else {
@@ -25,3 +31,4 @@ public class Reconciliation {
         }
     }
 }
+
